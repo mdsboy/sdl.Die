@@ -11,10 +11,13 @@ import android.widget.SeekBar.OnSeekBarChangeListener
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity(), OnSeekBarChangeListener {
+
     private var glView: GLSurfaceView? = null
     private var renderer: SimpleRenderer? = null
     private var cube: Cube? = null
     private var pyramid: Pyramid? = null
+    private var octahedron: Octahedron? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d(TAG, "onCreate")
@@ -32,6 +35,7 @@ class MainActivity : AppCompatActivity(), OnSeekBarChangeListener {
         renderer = SimpleRenderer()
         cube = Cube()
         pyramid = Pyramid()
+        octahedron = Octahedron()
         renderer!!.setObj(cube)
         glView!!.setRenderer(renderer)
     }
@@ -60,6 +64,7 @@ class MainActivity : AppCompatActivity(), OnSeekBarChangeListener {
         when (item.itemId) {
             R.id.menu_cube -> renderer!!.setObj(cube)
             R.id.menu_pyramid -> renderer!!.setObj(pyramid)
+            R.id.menu_octahedron -> renderer!!.setObj(octahedron)
         }
         return true
     }
